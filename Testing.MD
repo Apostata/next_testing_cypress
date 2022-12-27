@@ -2,12 +2,12 @@
  ## testing library remember
  ### Queries
  #### Command
-1. **get**, espera que o elemento que esteja no DOM:
+1. **get**, espera que o elemento esteja no DOM:
    * getByRole, = getByRole('role', {...options}), exemplo
    * expect(htmlHelement)`.getByRole('link', {name: /learn react/i}` - Pega o elemento do tipo link de texto 'learn react', not case sensitive
    * veja : https://www.w3.org/TR/wai-aria/#role_definitions para roles de cada elemento do DOM
-2. **query**, espera que o elemento que NÃO está no DOM
-3. **find**, espera que o elemento apareça asyncrono
+2. **query**, espera que o elemento que NÃO esteja no DOM
+3. **find**, espera que o elemento apareça asyncrono(futuramente) no DOM
 
 ## UI testing
 Para tratar chamadas de api a partir do frontend usar o `MSW (Mock Service Work)`, pois mockamos a chamadas de api sem fazer depender de fato da implementação do backend
@@ -33,9 +33,8 @@ Para tratar chamadas de api a partir do frontend usar o `MSW (Mock Service Work)
 	];
 	```
 
-
-#### Testing Static page
-No teste unitário não importa os metodos `getStaticProps` ou `getStaticPaths`, visto que no final o componente, no frontend irá receber o resultado desses metodo executados no backend.
+### Exemplos testes UI
+Nos testes unitários de UI não importa, os metodos `getStaticProps` ou `getStaticPaths`, visto que no final o componente, no frontend irá receber o resultado desses metodo executados no backend.
 
 Exemplo:
 ```tsx
@@ -54,8 +53,6 @@ test('Home page should have the correct heading and background image',()=>{
 });
 ```
 
-#### Testing SSG e CSG (Static Site Generation e Client Side Generation)
-No teste unitário não importa os metodos `getStaticProps` ou `getStaticPaths`, visto que no final o componente, no frontend irá receber o resultado desses metodo executados no backend.
 
 Exemplo:
 ```tsx
