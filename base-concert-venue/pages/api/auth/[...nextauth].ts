@@ -6,6 +6,10 @@ import { axiosInstance } from "@/lib/axios/axiosInstance";
 import { routes } from "@/lib/axios/routes";
 import type { User } from "@/lib/features/users/types";
 
+interface DynType{
+  [key:string]:any
+}
+
 export default NextAuth({
   providers: [
     // reference: https://next-auth.js.org/configuration/providers/credentials#how-to
@@ -49,7 +53,7 @@ export default NextAuth({
       // reference: https://next-auth.js.org/configuration/callbacks#jwt-callback
       // Persist the JWT token to the token right after signin
       if (user) {
-        token.user = user.user;
+        token.user = (user as DynType).user;
       }
       return token;
     },
@@ -60,7 +64,7 @@ export default NextAuth({
 
       const tokenUser = token.user as User;
 
-      session.token = tokenUser.token;
+      (session as DynType).token = tokenUser.token;
       session.user = tokenUser;
       return session;
     },

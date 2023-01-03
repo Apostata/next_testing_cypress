@@ -4,9 +4,16 @@
     "dev": "next dev",
     "lint": "next lint",
     "build": "next build",
+    "build:test": "npm run db:reset && cross-env NODE_ENV=\"test\" next build",
+    "db:reset": "sh ./scripts/reset-db.sh",
+    "start:test": "cross-env NODE_ENV=\"test\" next start",
     "start": "next start",
     "test": "jest --watch",
-    "test:ci": "jest --ci"
+    "test:ci": "jest --ci",
+    "cypress:open": "env-cmd -f .env.test.local cypress open",
+    "cypress:start": "start-server-and-test 'npm run start:test' 3000 'npm run cypress:open'",
+    "cypress:build": "npm run build:test && npm run cypress:start",
+    "cypress:run": "start-server-and-test 'npm run start:test' 3000 'env-cmd -f .env.test.local cypress run'"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.6",
@@ -40,6 +47,7 @@
     "swr": "^1.2.2"
   },
   "devDependencies": {
+    "@testing-library/cypress": "^9.0.0",
     "@testing-library/jest-dom": "5.16.1",
     "@testing-library/react": "12.1.2",
     "@testing-library/user-event": "13.5.0",
@@ -49,11 +57,16 @@
     "@typescript-eslint/eslint-plugin": "^5.15.0",
     "@typescript-eslint/parser": "^5.15.0",
     "babel-jest": "27.4.5",
+    "cross-env": "^7.0.3",
+    "cypress": "^12.2.0",
+    "env-cmd": "^10.1.0",
     "eslint": "8.5.0",
     "eslint-config-next": "^12.1.0",
     "eslint-plugin-testing-library": "^5.0.1",
     "jest": "27.4.5",
     "msw": "^0.49.2",
+    "next-test-api-route-handler": "^3.1.7",
+    "start-server-and-test": "^1.15.2",
     "typescript": "4.5.4",
     "typescript-eslint": "^0.0.1-alpha.0"
   }

@@ -93,4 +93,9 @@ Quando precisa de SEO e os dados da página são dinâmicos
 ### CSR (Client Side Rendering)
 Quando não precisamos de SEO, mas o conteúdo muda com frequência, usaremos React-Query ao invés do SWR
 
+### projeto
+testaremos o projeto `base-concert-venue`
 
+[Resumo Next](./Next.md)
+[Resumo Testing library](./testing-library.md)
+[Exemplos de teste](./Testing.MD)
